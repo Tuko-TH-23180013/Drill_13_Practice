@@ -5,7 +5,7 @@ from boy import Boy
 from grass import Grass
 from pico2d import *
 from sdl2 import (SDL_KEYDOWN, SDL_KEYUP, SDLK_ESCAPE, SDLK_i, SDLK_p,
-                  SDLK_0)
+                  SDLK_0, SDLK_1)
 
 
 boy = None
@@ -53,6 +53,10 @@ def handle_events():
         elif (item_selecting and event.type == SDL_KEYDOWN and
               event.key == SDLK_0):
             boy.ball_image_path = None
+            item_selecting = False
+        elif (item_selecting and event.type == SDL_KEYDOWN and
+              event.key == SDLK_1):
+            boy.ball_image_path = 'ball21x21.png'
             item_selecting = False
         elif item_selecting:
             # Keep held movement keys in sync without accepting actions.
