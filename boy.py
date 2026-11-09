@@ -18,6 +18,7 @@ class Boy:
         self.dir = 0
         self.face_dir = 1
         self.pressed_keys = set()
+        self.ball_image_path = 'ball21x21.png'
 
         self.machine = Machine(
             model=self,
@@ -47,7 +48,10 @@ class Boy:
         self.frame = 0
 
     def fire_ball(self):
-        ball = Ball(self.x, self.y, self.face_dir * 10)
+        if self.ball_image_path is None:
+            return
+        ball = Ball(self.x, self.y, self.face_dir * 10,
+                    self.ball_image_path)
         game_world.add_oject(ball)
 
     def handle_event(self, event):
